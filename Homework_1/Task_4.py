@@ -33,3 +33,4 @@ elif revenue == costs:
 else:
     print(f'Финансовый результат - убыток. Его величина: {-(revenue - costs)}')
 
+
