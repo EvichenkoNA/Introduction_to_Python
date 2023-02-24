@@ -27,7 +27,9 @@ if revenue > costs:
     count = int(input('Введите численность сотрудников фирмы: '))
     print(f'Прибыль фирмы в расчете на одного сотрудника = '
           f'{round((revenue - costs) / count, 3)}')
+elif revenue == costs:
+    print(f'Выручка равна себестоимости. Финансовый результат - '
+          f'{revenue - costs}')
 else:
     print(f'Финансовый результат - убыток. Его величина: {-(revenue - costs)}')
-
 
