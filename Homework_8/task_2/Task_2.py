@@ -28,7 +28,6 @@ import json
 
 current_dir = os.getcwd()
 
-
 def write_order_to_json(item, quantity, price, buyer, date):
     filename = os.path.join(current_dir, 'orders.json')
 
