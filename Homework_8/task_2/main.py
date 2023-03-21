@@ -23,3 +23,39 @@
 и достучаться до списка, который и нужно пополнять
 а потом сохранять все в файл
 """
+import os
+import json
+
+current_dir = os.getcwd()
+
+
+def write_order_to_json(item, quantity, price, buyer, date):
+    filename = os.path.join(current_dir, 'orders.json')
+
+    if os.path.exists(filename):
+        data = {}
+
+        with open(filename, encoding="utf-8") as fl:
+            data = json.loads(fl.read())
+
+        data['orders'].append(
+            {'item': item, 'quantity': quantity, 'price': price,
+             'buyer': buyer, 'date': date})
+
+        with open(filename, "w", encoding="utf-8") as fl:
+            json.dump(data, fl, indent=4, separators=(',', ': '),
+                      ensure_ascii=False)
+
+        print(f'Данные добавлены в {filename}')
+
+    else:
+        print(f'Исходный файл по пути {filename} не найден')
+
+
+if __name__ == '__main__':
+    write_order_to_json('ноутбук', '2', '100000', 'Ivanov I.I.',
+                        '30.12.2022')
+    write_order_to_json('ноутбук', '1', '120000', 'Petrov P.P.',
+                        '30.12.2022')
+    write_order_to_json('монитор', '1', '30000', 'Petrov P.P.',
+                        '30.12.2022')
